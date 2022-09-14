@@ -1,7 +1,7 @@
 name: Test Workflow
 
 on:
-  workflow_dispatch:
+  push:
 
 jobs:
   build-test:
@@ -18,7 +18,6 @@ jobs:
           npm ci
           npm run build
           npm test
-
   deploy:
     runs-on: ubuntu-latest
 
