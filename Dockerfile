@@ -1,7 +1,6 @@
 FROM node:16 AS builder
 WORKDIR "/app"
 COPY . .
-RUN npm install -g npm
 RUN npm i
 RUN npm run build
 RUN npm prune --production
