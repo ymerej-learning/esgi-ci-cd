@@ -1,9 +1,7 @@
 name: Test Workflow
 
 on:
-  push:
-    branches:
-      - "main"
+  workflow_dispatch:
 
 jobs:
   build-test:
@@ -23,7 +21,6 @@ jobs:
       - name: Test the application
         run: |
           npm test
-      
 
   deploy:
     runs-on: ubuntu-latest
