@@ -1,0 +1,3 @@
+2022-09-14T16:20:27.2622080Z ##[debug]Starting: Complete job
+2022-09-14T16:20:27.2624297Z Cleaning up orphan processes
+2022-09-14T16:20:27.3188155Z ##[debug]Finishing: Complete job

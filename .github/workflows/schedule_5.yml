@@ -1,0 +1,13 @@
+name: Scheduled events - every 5min
+
+on:
+  schedule:
+  - cron: "*/5 * * * *"
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Scheduled events")

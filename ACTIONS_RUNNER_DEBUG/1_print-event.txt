@@ -1,0 +1,8 @@
+2022-09-14T16:25:26.7086222Z ##[section]Starting: Prepare job print-event
+2022-09-14T16:25:26.7224103Z Evaluating strategy
+2022-09-14T16:25:26.7224269Z Creating job '__default'
+2022-09-14T16:25:26.7224482Z Evaluating timeout
+2022-09-14T16:25:26.7224507Z Evaluating cancel timeout
+2022-09-14T16:25:26.7224531Z Evaluating continue on error
+2022-09-14T16:25:26.7224556Z Evaluating target
+2022-09-14T16:25:26.7225719Z ##[section]Finishing: Prepare job print-event

@@ -1,0 +1,28 @@
+name: 'Test with self-hosted runner'
+
+on:
+  push:
+
+jobs:
+    node-docker:
+      runs-on: self-hosted
+
+      steps:
+        - uses: actions/checkout@v3
+
+        - name: Use Node.js ${{ matrix.node-version }}
+          uses: actions/setup-node@v3
+          with:
+            node-version: ${{ matrix.node-version }}
+
+        - name: Install dependencies
+          run: npm ci
+          working-directory: node-app
+
+        - name: Test the application
+          run: npm test
+          working-directory: node-app
+
+        - name: Run the application
+          run: npm start
+          working-directory: node-app

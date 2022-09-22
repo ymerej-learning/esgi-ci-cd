@@ -1,0 +1,16 @@
+name: Workflow run events
+
+on:
+  workflow_run:
+    workflows: ["Workflow dispatch events"]
+    types:
+      - completed
+
+jobs:
+  print-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("$firstJobEvent")

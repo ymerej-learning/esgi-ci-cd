@@ -1,0 +1,16 @@
+name: Pull request events
+
+on:
+  pull_request:
+    types:
+      - opened
+      - closed
+
+jobs:
+  print-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Pull request events when a PR is open or close")

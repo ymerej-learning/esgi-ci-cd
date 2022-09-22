@@ -1,0 +1,24 @@
+name: Push and pull request events
+
+on: [push, pull_request]
+
+jobs:
+  my_first_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action }} == 'push'
+    steps:
+
+    - name: Event that triggered this first job
+      run: |
+        echo $("Push events on branch dev with excluding staging and including branch who start with feat/")
+        echo $("And when the files with a ts extesion have been modified plus a specific folder")
+
+  my_second_job:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.action }} == 'push' || ${{ github.event.action }} == 'pull_request'
+    steps:
+
+      - name: Event that triggered this second job
+        run: |
+          echo $("Push events on branch dev with excluding staging and including branch who start with feat/")
+          echo $("And when the files with a ts extesion have been modified plus a specific folder")

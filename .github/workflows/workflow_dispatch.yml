@@ -1,0 +1,16 @@
+name: Workflow dispatch events
+
+on:
+  workflow_dispatch:
+
+env:
+  firstJobEvent: ${{ github.event.action }}
+
+jobs:
+  print-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Workflow dispatch events")

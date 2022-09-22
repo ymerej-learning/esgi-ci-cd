@@ -1,0 +1,22 @@
+name: Push events
+
+on:
+  push:
+    branches:
+      - 'dev'
+      - '!staging'
+      - 'feat/**'
+
+    paths:
+      - '**.ts'
+      - 'specific_folder/**'
+
+jobs:
+  print-event:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Push events on branch dev with excluding staging and including branch who start with feat/")
+          echo $("And when the files with a ts extesion have been modified plus a specific folder")

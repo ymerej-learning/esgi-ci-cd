@@ -1,0 +1,13 @@
+name: Scheduled events - every tuesday
+
+on:
+  schedule:
+  - cron: "0 3 * * TUE"
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Scheduled events")

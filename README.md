@@ -1,88 +1,83 @@
-# Docker Deployment
+# Github Action Exercices
 
-In this tutorial we'll define a github action CI pipeline that will :
-1. Build our app
-2. Test it
-3. Build the docker image
-4. Deploy the docker image to DockerHub (public repository)
+## Events
+[(Event List)](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
 
-## Building and testing our app
+For this part, you will have to trigger the workflow under specific conditions. Each item on the list correspond to a particular scenario where the workflow should (*or should not*) run.
 
-This joke app is a simple NestJS application, but we will use pnpm to build and test it.
+### Push
+1. *Create and publish 3 branches, "dev", "staging", "feat/feature-1"*
+2. When you have a push on the branch "dev" only
+3. When you have a push on any branch **except** "staging"
+4. When you have a push on any branch where the name starts with "feat"
+5. When only the files with a ts extension have been modified
+6. When a specific folder have been modified
 
-Let's start.
 
-### Create a github action file
+### Pull request
+1. When someone **creates** a PR
+2. When someone **closed** a PR
 
-#### .github/workflows/docker-deploy.yml
-Github automatically detects pipeline action when you create a yml file in the .github/workflows directory. This file contains all the settings and steps to do basically anything you want from a ci-cd pipeline.
+### Scheduled
+[Help](https://crontab.guru)
+1. Every minutes
+2. Every 1h 30m
+3. Every Tuesday at 3am
 
-Let's start with the basics. Give your pipeline a name :
+### Push & PR
+1. *Create two jobs inside a new workflow*
+2. When you have a push, execute both job
+3. When you have a PR, execute only the first job.
+4. *Create a **dev** branch, and inside it create a dummy change.txt file. Put your name in it. Publish this branch*
+5. ❓ Create a pull request from the **dev** branch to **main**. You should see the first job executing directly inside the PR (from the github UI)
 
-```yaml
-name: Docker Image CI
-```
+### Manual & Custom
+1. When you click on *run workflow* button in the UI
+2. *Create two workflows*
+3. ❓ Trigger the second workflow from the first one, and pass the github event name from the first one to the second with a variable named "firstJobEvent"
 
-This name is what you'll see in your github repository UI (under the "Action" tab)
+## Troubleshooting tools & logs
+Install the [nektos/act](https://github.com/nektos/act) tool to run your workflows locally.
 
-Next, we need to tell github action when to run this workflow. We have many options for that, the most common one being by action type (push, pull_request,...) and branch.
+1. *Once **act** is installed, run the command from your cli (`act`) and let it download the docker image it needs.*
+2. *Create a new repository secret called **ACTIONS_STEP_DEBUG** and set its value to true*
+3. Re-run your last workflow from the github action UI
+4. Get a particular line from the job's output and extract a link that points to that line. Save it in a result.
+5. Download the logs for an entire job
+6. *Create a new repository secret called **ACTIONS_RUNNER_DEBUG** and set its value to true*
+7. *Remove the **ACTIONS_STEP_DEBUG** secret*
+8. Re-run the last workflow
+9. Download the logs from the latest job, and compare the two debug mode. What's the major difference ?
+10. Run your workflow with act. Don't forget to specify the event type.
 
-Add the on directive after the name of the worflow :
+## Runners
 
-```yaml
-on:
-  push:
-    branches: ["main"]
-```
+Here, you will have to compose with the runner to achieve the demanded results. A node app has been added, in the `node-app` directory
 
-Our workflow will now run everytime we **push** to the branch **main**
+### Job's default
 
-Finally, we will setup a basic Node environnement to build and test our app :
+1. Write a workflow that installs dependancies and runs the test. Specify a default folder for all the steps inside the job.
 
-```yaml
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
+### Matrix 
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+1. Create a matrix strategy for a node js app that will install dependancies for node 12, 14, 16
+2. Create a second matrix strategy to test the node app on ubuntu and windows
 
-      - uses: pnpm/action-setup@v2.0.1
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
+### Docker image runner
+1. Now, instead of installing node js with the action, use a node image for the tests of the node-app
 
-      - name: Install dependencies
-        run: pnpm install
+### Self-hosted runners
+1. Download the [self-hosted runner script](https://docs.github.com/en/actions/hosting-your-own-runners/adding-self-hosted-runners) 
+2. Create a workflow that will install the node dependancies, test and run the app (`npm start`)
+3. Look at the result from the job. Why is this a bad idea for public repositories ?
 
-      - name: Unit Tests
-        run: pnpm test
-```
+## Environnements
 
-Let's understand what these lines does.
-
-- Jobs
-  - We define here what the pipeline actually does. Jobs takes a list of user defined job that will be executed on a runner.
-- Build
-  - The name of the job.
-- Runs-on
-  - The image that will be used to execute the commands
-- Steps
-  - A list of command that will be executed. You can either write cli commands or use predefined scripts
-- Uses
-  - This is a predefined script provided by github. Checkout checks out the code from the repo.
-  - setup-node sets up node
-- Run
-  - runs cli commands
-
-#### Why build and test ?
-
-As our CD is automated, we must do the most to prevent any bugs or erros to reach production. So, having a fully tested (unit and e2e) is very important.
-
-Ok, now commit your file and see the result in the github action page associated with your repo.
+1. In your repo's settings, create two environnements. One for production, one for staging.
+2. Write a workflow that deploy the joke app to heroku on a push to the main branch
+3. Write a workflow that deploy the joke app to heroku on a push to the dev branch (on a different heroku app)
+4. For each workflow, specify the corresponding environnement and the url of the app you created
+5. For the production environnement, set the following secret : `JOKE_URL=https://v2.jokeapi.dev/joke/Programming`
+6. For the staging environnement, set the following secret : `JOKE_URL=https://v2.jokeapi.dev/joke/Any?blacklistFlags=racist,sexist`
+7. Use the secret to incorporate different joke url depending on the environnement ([Help](https://github.com/marketplace/actions/deploy-to-heroku#procfile-passing))

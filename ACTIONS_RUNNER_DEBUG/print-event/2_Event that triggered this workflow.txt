@@ -1,0 +1,8 @@
+2022-09-14T16:25:34.6004091Z ##[group]Run echo $("Workflow dispatch events")
+2022-09-14T16:25:34.6004590Z [36;1mecho $("Workflow dispatch events")[0m
+2022-09-14T16:25:34.6615599Z shell: /usr/bin/bash -e {0}
+2022-09-14T16:25:34.6616086Z env:
+2022-09-14T16:25:34.6616388Z   firstJobEvent: 
+2022-09-14T16:25:34.6616676Z ##[endgroup]
+2022-09-14T16:25:34.7175678Z /home/runner/work/_temp/37a7bb5c-40ea-440c-9d83-b241d4a7b129.sh: line 1: Workflow dispatch events: command not found
+2022-09-14T16:25:34.7176099Z 

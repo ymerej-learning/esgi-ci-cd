@@ -1,0 +1,57 @@
+2022-09-14T16:20:26.7685804Z ##[debug]Starting: Set up job
+2022-09-14T16:20:26.7686294Z Current runner version: '2.296.2'
+2022-09-14T16:20:26.7712947Z ##[group]Operating System
+2022-09-14T16:20:26.7713564Z Ubuntu
+2022-09-14T16:20:26.7714035Z 20.04.5
+2022-09-14T16:20:26.7714323Z LTS
+2022-09-14T16:20:26.7714583Z ##[endgroup]
+2022-09-14T16:20:26.7714915Z ##[group]Runner Image
+2022-09-14T16:20:26.7715329Z Image: ubuntu-20.04
+2022-09-14T16:20:26.7715620Z Version: 20220905.1
+2022-09-14T16:20:26.7716151Z Included Software: https://github.com/actions/runner-images/blob/ubuntu20/20220905.1/images/linux/Ubuntu2004-Readme.md
+2022-09-14T16:20:26.7716834Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu20%2F20220905.1
+2022-09-14T16:20:26.7717342Z ##[endgroup]
+2022-09-14T16:20:26.7717663Z ##[group]Runner Image Provisioner
+2022-09-14T16:20:26.7718049Z 1.0.0.0-main-20220907-1
+2022-09-14T16:20:26.7718483Z ##[endgroup]
+2022-09-14T16:20:26.7719571Z ##[group]GITHUB_TOKEN Permissions
+2022-09-14T16:20:26.7720245Z Actions: write
+2022-09-14T16:20:26.7720695Z Checks: write
+2022-09-14T16:20:26.7720985Z Contents: write
+2022-09-14T16:20:26.7721342Z Deployments: write
+2022-09-14T16:20:26.7721689Z Discussions: write
+2022-09-14T16:20:26.7721975Z Issues: write
+2022-09-14T16:20:26.7722294Z Metadata: read
+2022-09-14T16:20:26.7722635Z Packages: write
+2022-09-14T16:20:26.7723000Z Pages: write
+2022-09-14T16:20:26.7723291Z PullRequests: write
+2022-09-14T16:20:26.7723665Z RepositoryProjects: write
+2022-09-14T16:20:26.7724053Z SecurityEvents: write
+2022-09-14T16:20:26.7724351Z Statuses: write
+2022-09-14T16:20:26.7724708Z ##[endgroup]
+2022-09-14T16:20:26.7728308Z Secret source: Actions
+2022-09-14T16:20:26.7728885Z ##[debug]Primary repository: ymerej-noyorb/esgi-ci-cd-exercises
+2022-09-14T16:20:26.7729397Z Prepare workflow directory
+2022-09-14T16:20:26.7833425Z ##[debug]Creating pipeline directory: '/home/runner/work/esgi-ci-cd-exercises'
+2022-09-14T16:20:26.7836445Z ##[debug]Creating workspace directory: '/home/runner/work/esgi-ci-cd-exercises/esgi-ci-cd-exercises'
+2022-09-14T16:20:26.7837848Z ##[debug]Update context data
+2022-09-14T16:20:26.7840739Z ##[debug]Evaluating job-level environment variables
+2022-09-14T16:20:26.8898689Z ##[debug]Evaluating: github.event.action
+2022-09-14T16:20:26.8905782Z ##[debug]Evaluating Index:
+2022-09-14T16:20:26.8908435Z ##[debug]..Evaluating Index:
+2022-09-14T16:20:26.8908944Z ##[debug]....Evaluating github:
+2022-09-14T16:20:26.8925195Z ##[debug]....=> Object
+2022-09-14T16:20:26.8944046Z ##[debug]....Evaluating String:
+2022-09-14T16:20:26.8944787Z ##[debug]....=> 'event'
+2022-09-14T16:20:26.8948422Z ##[debug]..=> Object
+2022-09-14T16:20:26.8949021Z ##[debug]..Evaluating String:
+2022-09-14T16:20:26.8949367Z ##[debug]..=> 'action'
+2022-09-14T16:20:26.8949856Z ##[debug]=> null
+2022-09-14T16:20:26.8952509Z ##[debug]Result: null
+2022-09-14T16:20:26.8988525Z ##[debug]Evaluating job container
+2022-09-14T16:20:26.8993052Z ##[debug]Evaluating job service containers
+2022-09-14T16:20:26.8996341Z ##[debug]Evaluating job defaults
+2022-09-14T16:20:26.9073136Z Prepare all required actions
+2022-09-14T16:20:26.9284203Z ##[debug]Set step '__run' display name to: 'Event that triggered this workflow'
+2022-09-14T16:20:26.9292158Z ##[debug]Collect running processes for tracking orphan processes.
+2022-09-14T16:20:26.9572459Z ##[debug]Finishing: Set up job

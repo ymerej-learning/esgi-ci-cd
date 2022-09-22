@@ -1,0 +1,14 @@
+name: Scheduled events - every 90min
+
+on:
+  schedule:
+  - cron: '0 0-21/3 * * *'
+  - cron: '30 1-22/3 * * *'
+
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Event that triggered this workflow
+        run: |
+          echo $("Scheduled events")
