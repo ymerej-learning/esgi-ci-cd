@@ -1,0 +1,63 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+  heroku: circleci/heroku@1.2.6
+
+#################### jobs ####################
+# jobs:
+#   build-test:
+#     docker:
+#       - image: cimg/base:stable
+#     steps:
+#       - checkout
+#       - node/install:
+#           node-version: '16.13'
+
+#       - node/install-packages:
+#           cache-path: ~/project/node_modules
+#           override-ci-command: npm install
+
+#       - run: npm run build
+#       - run: npm test
+
+#################### more config ####################
+
+# jobs:
+#   deploy-heroku:
+#     executor: heroku/default
+
+#     steps:
+#       - checkout
+#       - heroku/install
+#       - heroku/deploy-via-git:
+#           app-name: "jokes-circle-ci"
+
+#################### orbs ####################
+workflows:
+  deploy:
+    jobs:
+      - node/test:
+          filters:
+            branches:
+              only:
+                - main
+            
+      - node/run:
+          requires:
+            - "node/test"
+          npm-run: build
+          filters:
+            branches:
+              only:
+                - main
+
+      - heroku/deploy-via-git:
+          app-name: "jokes-circle-ci"
+          requires:
+            - "node/test"
+            - "node/run"
+          filters:
+            branches:
+              only:
+                - main
