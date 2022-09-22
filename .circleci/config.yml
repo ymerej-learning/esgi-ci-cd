@@ -44,7 +44,7 @@ jobs:
       - heroku/install
 
       - heroku/deploy-via-git:
-          app-name: "joke-api-iw3"
+          app-name: "jokes-circle-ci"
 
   docker-push:
     machine:
