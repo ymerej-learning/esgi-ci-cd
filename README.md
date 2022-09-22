@@ -85,4 +85,4 @@ Let's understand what these lines does.
 
 As our CD is automated, we must do the most to prevent any bugs or erros to reach production. So, having a fully tested (unit and e2e) is very important.
 
-Ok, now commit your file and see the result in the github action page associated with your repo.
+Ok, now commit your file and see the result in the github action page associated with your repo

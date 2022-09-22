@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 21,
+  "agentName": "CD0075NF",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelines.actions.githubusercontent.com/a9fJ7B8fJEKt0gkG0SIcNfbMlOC5yZTPEMwZ8535dooZyQoAhX",
+  "gitHubUrl": "https://github.com/ymerej-noyorb/esgi-ci-cd-exercises",
+  "workFolder": "_work"
+}

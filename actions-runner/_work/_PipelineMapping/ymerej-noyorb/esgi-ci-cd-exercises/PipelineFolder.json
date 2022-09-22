@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "ymerej-noyorb/esgi-ci-cd-exercises",
+  "pipelineDirectory": "esgi-ci-cd-exercises",
+  "workspaceDirectory": "esgi-ci-cd-exercises\\esgi-ci-cd-exercises",
+  "repositories": {
+    "ymerej-noyorb/esgi-ci-cd-exercises": {
+      "repositoryPath": "esgi-ci-cd-exercises\\esgi-ci-cd-exercises",
+      "lastRunOn": "09/19/2022 10:37:26 +02:00"
+    }
+  },
+  "lastRunOn": "09/19/2022 10:37:26 +02:00"
+}
