@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
+    environment {
+        VERSION = 'latest'
+    }
+
     stages {
         stage('build') {
             steps {
-                sh "echo 'Building...'"
+                sh "echo 'Building version ${VERSION}...'"
             }
         }
     }
